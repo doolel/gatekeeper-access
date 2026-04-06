@@ -5,28 +5,12 @@
         body { background: #000; color: #d4af37; font-family: 'Courier New', monospace; padding: 20px; text-align: center; }
         .nav-bar { background: #111; padding: 20px; border-bottom: 2px solid #d4af37; margin-bottom: 30px; }
         .nav-bar a { background: #222; color: #d4af37; padding: 10px 20px; text-decoration: none; border: 1px solid #d4af37; margin: 5px; display: inline-block; }
-        .wall-box { border: 1px solid #d4af37; padding: 20px; background: #0a0a0a; max-width: 600px; margin: 40px auto; text-align: left; }
-        #graffitiInput { width: 100%; height: 60px; background: #111; color: #0f0; border: 1px solid #444; padding: 10px; font-family: monospace; resize: none; }
-        .msg { border-bottom: 1px solid #222; padding: 10px 0; font-size: 14px; }
-        .timestamp { color: #555; font-size: 12px; }
+        .wall-container { max-width: 600px; margin: 40px auto; text-align: left; border: 1px solid #d4af37; padding: 20px; background: #0a0a0a; }
+        h1 { letter-spacing: 2px; }
     </style>
 </head>
 <body>
-<script src="https://giscus.app/client.js"
-        data-repo="doolel/gatekeeper-access"
-        data-repo-id="R_kgDOR6-mVQ"
-        data-category="Announcements"
-        data-category-id="DIC_kwDOR6-mVc4C6KeO"
-        data-mapping="pathname"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="bottom"
-        data-theme="preferred_color_scheme"
-        data-lang="en"
-        crossorigin="anonymous"
-        async>
-</script>
+
     <div class="nav-bar">
         <a href="https://doolel.github.io/empire-vision/">[ VISION ]</a>
         <a href="https://doolel.github.io/oracle-live/">[ ORACLE LIVE ]</a>
@@ -36,34 +20,26 @@
     <h1>🌑 GATEKEEPER ACCESS CONTROL</h1>
     <p>STAKE ASSETS TO INITIALIZE QUANTUM PREDATOR NODES</p>
 
-    <div class="wall-box">
-        <h3>📜 EMPIRE GRAFFITI WALL</h3>
-        <p style="font-size: 11px; color: #888;">MAX 120 TECKEN | MAX 5 PER DAG</p>
+    <div class="wall-container">
+        <h3 style="text-align: center; border-bottom: 1px solid #333; padding-bottom: 10px;">📜 EMPIRE GRAFFITI WALL</h3>
+        <p style="font-size: 11px; color: #888; text-align: center;">MESSAGES ARE PERMANENTLY LOGGED ON THE BLOCKCHAIN (GITHUB DISCUSSIONS)</p>
         
-        <textarea id="graffitiInput" maxlength="120" placeholder="Skriv till imperiet..."></textarea>
-        <button onclick="postToWall()" style="margin-top: 10px; background: #d4af37; color: #000; border: none; padding: 10px 20px; cursor: pointer; font-weight: bold; width: 100%;">POST MESSAGE</button>
-
-        <div id="wallMessages" style="margin-top: 20px;">
-            <div class="msg"><span class="timestamp">[12:34]</span> System: Väggen är nu öppen för allmänheten.</div>
-        </div>
+        <script src="https://giscus.app/client.js"
+                data-repo="doolel/gatekeeper-access"
+                data-repo-id="R_kgDOR6-mVQ"
+                data-category="Announcements"
+                data-category-id="DIC_kwDOR6-mVc4C6KeO"
+                data-mapping="pathname"
+                data-strict="0"
+                data-reactions-enabled="1"
+                data-emit-metadata="0"
+                data-input-position="bottom"
+                data-theme="dark"
+                data-lang="sv"
+                crossorigin="anonymous"
+                async>
+        </script>
     </div>
 
-    <script>
-        function postToWall() {
-            const input = document.getElementById('graffitiInput');
-            const wall = document.getElementById('wallMessages');
-            
-            if(input.value.trim().length > 0) {
-                const time = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
-                const div = document.createElement('div');
-                div.className = 'msg';
-                div.innerHTML = `<span class="timestamp">[${time}]</span> ${input.value}`;
-                
-                wall.insertBefore(div, wall.firstChild);
-                input.value = '';
-                alert("Meddelande mottaget av Gatekeeper.");
-            }
-        }
-    </script>
 </body>
 </html>
